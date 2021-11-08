@@ -3,16 +3,16 @@ import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import Router, { withRouter } from 'next/router';
 
-const films = {
-  1: 'https://swapi.dev/api/films/1/',
-  2: 'https://swapi.dev/api/films/2/',
-  3: 'https://swapi.dev/api/films/3/',
-  4: 'https://swapi.dev/api/films/4/',
-  5: 'https://swapi.dev/api/films/5/',
-  6: 'https://swapi.dev/api/films/6/',
-  7: 'https://swapi.dev/api/films/7/',
-  8: 'https://swapi.dev/api/films/8/',
-  9: 'https://swapi.dev/api/films/9/',
+const filmLinks = {
+  'https://swapi.dev/api/films/1/': 1,
+  'https://swapi.dev/api/films/2/': 2,
+  'https://swapi.dev/api/films/3/': 3,
+  'https://swapi.dev/api/films/4/': 4,
+  'https://swapi.dev/api/films/5/': 5,
+  'https://swapi.dev/api/films/6/': 6,
+  'https://swapi.dev/api/films/7/': 7,
+  'https://swapi.dev/api/films/8/': 8,
+  'https://swapi.dev/api/films/9/': 9,
 };
 
 const Home = (props) => {
@@ -47,15 +47,23 @@ const Home = (props) => {
     content = (
       <ul>
         {props.posts.map((character, id) => {
-          let films = '';
+          let disabledFilm = 4;
+          let characterInFilms = '';
+          let spanStyle = '';
 
           character.films.map((film) => {
-            films += film;
+            if (filmLinks[film]) {
+              console.log(filmLinks[film].valueOf());
+              characterInFilms += filmLinks[film].valueOf();
+              if (filmLinks[film].valueOf() == disabledFilm) {
+                spanStyle = 'disabledCharacter';
+              }
+            }
           });
 
           return (
-            <li key={id} className={character}>
-              {character.name} : {films}
+            <li key={id} className={spanStyle}>
+              {character.name} : {characterInFilms}
             </li>
           );
         })}
@@ -105,7 +113,7 @@ Home.getInitialProps = async ({ query }) => {
 
   return {
     totalCount: posts.data.count,
-    pageCount: posts.data.count / returnsPerPage,
+    pageCount: Math.ceil(posts.data.count / returnsPerPage),
     //currentPage: posts.data.meta.page,
     nextPage: posts.data.next,
     prevPage: posts.data.previous,
