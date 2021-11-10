@@ -4,6 +4,12 @@
 }
 .posts {
   min-height: 4em;
+  width: 65em;
+  background-color: gray;
+  li {
+    background-color: white;
+    width: 20em;
+  }
 }
 ul {
   list-style: none;
@@ -45,4 +51,10 @@ ul {
 }
 .disabledCharacter {
   text-decoration: line-through;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

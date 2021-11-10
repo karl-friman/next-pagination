@@ -39,7 +39,7 @@ const Home = (props) => {
   if (isLoading) content = <div>Loading...</div>;
   else {
     content = (
-      <ul>
+      <ul className='flex-container'>
         {props.posts.map((character, id) => {
           //let disabledFilms = ;
           let characterInFilms = '';
@@ -73,6 +73,10 @@ const Home = (props) => {
           return (
             <li key={id} className={spanStyle}>
               {character.name} : {characterInFilms}
+              <i class='fas fa-arrows-alt-v'>{character.height}</i>
+              <i class='fas fa-weight-hanging'>{character.mass}</i>
+              <i class='fas fa-eye'>{character.eye_color}</i>
+              <i class='fas fa-venus-mars'>{character.gender}</i>
             </li>
           );
         })}

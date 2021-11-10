@@ -11,7 +11,7 @@ function FilmFilter({ titles, checkedState, setCheckedState }) {
 
   return (
     <Fragment>
-      <h3>Select Toppings</h3>
+      <h3>Filter by movie</h3>
       <ul className='toppings-list'>
         {titles.map((title, index) => {
           return (
