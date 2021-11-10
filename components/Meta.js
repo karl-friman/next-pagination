@@ -14,10 +14,9 @@ const Meta = ({ title, keywords, description }) => {
 };
 
 Meta.defaultProps = {
-  title: 'The Release Calendar',
-  keywords: 'movies, release dates, films, cinema',
-  description: `Save your favorite movies, directors and actors and get a
-    personalised release schedule just for you.`,
+  title: 'Star Wars Character Viewer',
+  keywords: '',
+  description: ``,
 };
 
 export default Meta;

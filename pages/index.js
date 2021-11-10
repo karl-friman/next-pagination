@@ -71,12 +71,22 @@ const Home = (props) => {
             spanStyle = 'disabledCharacter';
           }
           return (
-            <li key={id} className={spanStyle}>
+            <li key={id} className={`characterListItem ${spanStyle}`}>
               {character.name} : {characterInFilms}
-              <i class='fas fa-arrows-alt-v'>{character.height}</i>
-              <i class='fas fa-weight-hanging'>{character.mass}</i>
-              <i class='fas fa-eye'>{character.eye_color}</i>
-              <i class='fas fa-venus-mars'>{character.gender}</i>
+              <ul>
+                <li>
+                  <i className='fas fa-arrows-alt-v'>{character.height}</i>
+                </li>
+                <li>
+                  <i className='fas fa-weight-hanging'>{character.mass}</i>
+                </li>
+                <li>
+                  <i className='fas fa-eye'>{character.eye_color}</i>
+                </li>
+                <li>
+                  <i className='fas fa-venus-mars'>{character.gender}</i>
+                </li>
+              </ul>
             </li>
           );
         })}
