@@ -4,7 +4,7 @@ const Footer = memo(() => {
   return (
     <>
       <footer className=''>
-        <div className=''>
+        <div className='container'>
           <b>{process.env.NODE_ENV}</b> mode © 2021 Copyright:
           <a className='' href='https://www.karlfriman.com/'>
             {' '}
