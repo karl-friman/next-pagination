@@ -3,15 +3,15 @@ const Footer = memo(() => {
   //console.log('footer render');
   return (
     <>
-      <footer className=''>
+      {/* <footer className='bg-deep'>
         <div className='container'>
-          <b>{process.env.NODE_ENV}</b> mode © 2021 Copyright:
-          <a className='' href='https://www.karlfriman.com/'>
+          <b>{process.env.NODE_ENV}</b> mode This site uses the
+          <a className='' href='https://swapi.dev/'>
             {' '}
-            Karl Friman
+            SWAPI API
           </a>
         </div>
-      </footer>
+      </footer> */}
     </>
   );
 });

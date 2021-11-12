@@ -11,28 +11,30 @@ function FilmFilter({ titles, checkedState, setCheckedState }) {
 
   return (
     <Fragment>
-      <h3>Filter by movie</h3>
-      <ul className='toppings-list'>
-        {titles.map((title, index) => {
-          return (
-            <li key={index}>
-              <div className='toppings-list-item'>
-                <div className='left-section'>
+      <div className='container'>
+        <ul className='flex-container filter'>
+          {titles.map((title, index) => {
+            return (
+              <li key={index}>
+                <div className='pad-end-3 txt-distinct'>
                   <input
                     type='checkbox'
+                    className=''
                     id={`custom-checkbox-${index}`}
                     name={title}
                     value={title}
                     checked={checkedState[index]}
                     onChange={() => handleOnChange(index)}
                   />
-                  <label htmlFor={`custom-checkbox-${index}`}>{title}</label>
+                  <label htmlFor={`custom-checkbox-${index}`} className='pad-2'>
+                    {title}
+                  </label>
                 </div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </Fragment>
   );
 }

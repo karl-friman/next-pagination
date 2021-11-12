@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Fragment } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import Router, { withRouter } from 'next/router';
 import { filmLinks, getTitles } from '../shared/films';
 import FilmFilter from '../components/FilmFilter';
+import Spinner from '../components/Spinner';
 
 const Home = (props) => {
   const [isLoading, setLoading] = useState(false);
@@ -36,7 +37,8 @@ const Home = (props) => {
   };
 
   let content = null;
-  if (isLoading) content = <div>Loading...</div>;
+  if (isLoading) content = <Spinner />;
+  //<div>Loading...</div>;
   else {
     content = (
       <ul className='flex-container'>
@@ -71,9 +73,12 @@ const Home = (props) => {
             spanStyle = 'disabledCharacter';
           }
           return (
-            <li key={id} className={`characterListItem mar-1 ${spanStyle}`}>
-              {character.name}
-              <ul>
+            <li
+              key={id}
+              className={`characterListItem mar-1 bg-distinct ${spanStyle}`}
+            >
+              <div className={'characterName'}>{character.name}</div>
+              <ul className={'characterInfo'}>
                 <li>
                   <i className='fas fa-arrows-alt-v'></i>
                   <span className={'characterData'}>{character.height}</span>
@@ -86,10 +91,10 @@ const Home = (props) => {
                   <i className='fas fa-eye'></i>
                   <span className={'characterData'}>{character.eye_color}</span>
                 </li>
-                <li>
+                {/* <li>
                   <i className='fas fa-venus-mars'></i>
                   <span className={'characterData'}>{character.gender}</span>
-                </li>
+                </li> */}
               </ul>
             </li>
           );
@@ -99,30 +104,39 @@ const Home = (props) => {
   }
 
   return (
-    <div className='container'>
-      <h1>Posts List with Pagination in Next.js</h1>
-      <FilmFilter
-        titles={props.titles}
-        checkedState={checkedState}
-        setCheckedState={setCheckedState}
-      />
-      <div className='posts'>{content}</div>
+    <Fragment>
+      <section>
+        <nav className='bg-deep'>
+          <div className='container'>
+            <h1 className='txt-charisma'>Star Wars Character Browser</h1>
+          </div>
+        </nav>
+      </section>
+      <div className='container'>
+        <FilmFilter
+          titles={props.titles}
+          checkedState={checkedState}
+          setCheckedState={setCheckedState}
+        />
 
-      <ReactPaginate
-        previousLabel={'previous'}
-        nextLabel={'next'}
-        breakLabel={'...'}
-        breakClassName={'break-me'}
-        activeClassName={'active'}
-        containerClassName={'pagination'}
-        subContainerClassName={'pages pagination'}
-        initialPage={props.currentPage - 1}
-        pageCount={props.pageCount}
-        marginPagesDisplayed={1}
-        pageRangeDisplayed={5}
-        onPageChange={paginationHandler}
-      />
-    </div>
+        <div className='posts'>{content}</div>
+
+        <ReactPaginate
+          previousLabel={'previous'}
+          nextLabel={'next'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          activeClassName={'active'}
+          containerClassName={'pagination txt-charisma'}
+          subContainerClassName={'pages pagination'}
+          initialPage={props.currentPage - 1}
+          pageCount={props.pageCount}
+          marginPagesDisplayed={1}
+          pageRangeDisplayed={5}
+          onPageChange={paginationHandler}
+        />
+      </div>
+    </Fragment>
   );
 };
 
