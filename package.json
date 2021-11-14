@@ -3,9 +3,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:debug": "set DEBUG=main_debug & next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.24.0",
@@ -16,7 +18,12 @@
     "sass": "^1.43.4"
   },
   "devDependencies": {
+    "@testing-library/react": "^12.1.2",
+    "babel-jest": "^27.3.1",
+    "colors": "^1.4.0",
+    "debug": "^4.3.2",
     "eslint": "7.32.0",
-    "eslint-config-next": "12.0.3"
+    "eslint-config-next": "12.0.3",
+    "jest": "^27.3.1"
   }
 }
