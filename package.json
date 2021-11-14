@@ -3,7 +3,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:debug": "set DEBUG=main_debug & next dev",
+    "dev:debug": "set DEBUG=debug:* & next dev",
+    "dev:debug:pages": "set DEBUG=debug:pages & next dev",
+    "dev:debug:components": "set DEBUG=debug:components & next dev",
+    "dev:debug:shared": "set DEBUG=debug:shared & next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

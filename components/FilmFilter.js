@@ -2,6 +2,12 @@ import { useState } from 'react';
 import { Fragment } from 'react';
 
 function FilmFilter({ titles, checkedState, setCheckedState }) {
+  const debug = require('debug')('debug:components');
+  const colors = require('colors');
+  debug('Entering FilmFilter.js'.bgBlue.white);
+  debug('titles:', titles);
+  debug('checkedState:', checkedState);
+
   const handleOnChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item

@@ -12,10 +12,13 @@ import Characters from '../components/Characters';
 // };
 // module.exports = functions;
 
-const debug = require('debug')('main_debug');
-debug('okokokokokok');
+const debug = require('debug')('debug:pages');
+const colors = require('colors');
 
 const Home = (props) => {
+  debug('Entering Index.js'.bgBlue.white);
+  debug('props:', props);
+
   const [isLoading, setLoading] = useState(false);
   const startLoading = () => setLoading(true);
   const stopLoading = () => setLoading(false);

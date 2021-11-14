@@ -13,14 +13,21 @@ export const filmLinks = {
 };
 
 export async function getTitles() {
+  const debug = require('debug')('debug:shared');
+  const colors = require('colors');
+
+  debug('Entering getTitles()'.bgBlue.white);
+
   let titles = [];
   const totalFilms = Object.keys(filmLinks).length;
-  console.log('total', totalFilms);
+
   for (let index = 1; index <= totalFilms; index++) {
     const uri = `https://swapi.dev/api/films/${index}`;
     const result = await axios.get(uri);
     titles.push(result.data.title);
   }
-  console.log('total in titles array:', titles);
+
+  debug('titles:', titles);
+
   return titles;
 }
