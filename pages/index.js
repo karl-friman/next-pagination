@@ -77,7 +77,9 @@ const Home = (props) => {
               key={id}
               className={`characterListItem mar-1 bg-distinct ${spanStyle}`}
             >
-              <div className={'characterName'}>{character.name}</div>
+              <div className={'characterName'}>
+                <h5>{character.name}</h5>
+              </div>
               <ul className={'characterInfo'}>
                 <li>
                   <i className='fas fa-arrows-alt-v'></i>
@@ -120,21 +122,22 @@ const Home = (props) => {
         />
 
         <div className='posts'>{content}</div>
-
-        <ReactPaginate
-          previousLabel={'previous'}
-          nextLabel={'next'}
-          breakLabel={'...'}
-          breakClassName={'break-me'}
-          activeClassName={'active'}
-          containerClassName={'pagination txt-charisma'}
-          subContainerClassName={'pages pagination'}
-          initialPage={props.currentPage - 1}
-          pageCount={props.pageCount}
-          marginPagesDisplayed={1}
-          pageRangeDisplayed={5}
-          onPageChange={paginationHandler}
-        />
+        <div className='pad-1'>
+          <ReactPaginate
+            previousLabel={'previous'}
+            nextLabel={'next'}
+            breakLabel={'...'}
+            breakClassName={'break-me'}
+            activeClassName={'active'}
+            containerClassName={'pagination txt-charisma'}
+            subContainerClassName={'pages pagination'}
+            initialPage={props.currentPage - 1}
+            pageCount={props.pageCount}
+            marginPagesDisplayed={1}
+            pageRangeDisplayed={5}
+            onPageChange={paginationHandler}
+          />
+        </div>
       </div>
     </Fragment>
   );

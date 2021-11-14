@@ -15,7 +15,7 @@ function FilmFilter({ titles, checkedState, setCheckedState }) {
         <ul className='flex-container filter'>
           {titles.map((title, index) => {
             return (
-              <li key={index}>
+              <li key={index} className=''>
                 <div className='pad-end-3 txt-distinct'>
                   <input
                     type='checkbox'
@@ -26,7 +26,10 @@ function FilmFilter({ titles, checkedState, setCheckedState }) {
                     checked={checkedState[index]}
                     onChange={() => handleOnChange(index)}
                   />
-                  <label htmlFor={`custom-checkbox-${index}`} className='pad-2'>
+                  <label
+                    htmlFor={`custom-checkbox-${index}`}
+                    className='pad-2 filter-txt'
+                  >
                     {title}
                   </label>
                 </div>
