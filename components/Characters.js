@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { filmLinks } from '../shared/films';
 
-function Characters({ props, checkedState, setCheckedState }) {
+function Characters({ props, checkedState }) {
   const debug = require('debug')('debug:components');
   const colors = require('colors');
   debug('Entering Characters.js'.bgBlue.white);

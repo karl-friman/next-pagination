@@ -71,11 +71,7 @@ const Home = (props) => {
           {isLoading ? (
             <Spinner />
           ) : (
-            <Characters
-              props={props}
-              checkedState={checkedState}
-              setCheckedState={setCheckedState}
-            />
+            <Characters props={props} checkedState={checkedState} />
           )}
         </div>
       </section>
