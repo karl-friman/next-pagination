@@ -11,7 +11,6 @@ function Characters({ props, checkedState }) {
     <Fragment>
       <ul className='flex-container'>
         {props.posts.map((character, id) => {
-          //let disabledFilms = ;
           let characterInFilms = '';
           let spanStyle = '';
           let shouldBeActive = false;
@@ -20,8 +19,7 @@ function Characters({ props, checkedState }) {
             if (filmLinks[film]) {
               let filmId = filmLinks[film].valueOf();
               let checkedStateId = filmId - 1;
-              //characterInFilms += filmLinks[film].valueOf();
-              characterInFilms += filmId; // + ':' + film + '' + props.titles[filmId - 1];
+              characterInFilms += filmId;
 
               if (checkedState[checkedStateId]) {
                 shouldBeActive = true;

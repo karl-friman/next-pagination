@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import Router, { withRouter } from 'next/router';
@@ -6,11 +6,6 @@ import { getTitles } from '../shared/films';
 import FilmFilter from '../components/FilmFilter';
 import Spinner from '../components/Spinner';
 import Characters from '../components/Characters';
-
-// const functions = {
-//   add: (num1, num2) => num1 + num2,
-// };
-// module.exports = functions;
 
 const debug = require('debug')('debug:pages');
 const colors = require('colors');
