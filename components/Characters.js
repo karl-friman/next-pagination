@@ -13,21 +13,25 @@ function Characters({ props, checkedState }) {
       <ul className='flex-container'>
         {props.posts.map((character, id) => {
           let characterInFilms = '';
-          let spanStyle = '';
+
           let shouldBeActive = false;
+          let characterData = {
+            id: id,
+            name: character.name,
+            height: character.height,
+            mass: character.mass,
+            eye_color: character.eye_color,
+            spanStyle: '',
+          };
 
-          let height = character.height;
-          let mass = character.mass;
-          let eye_color = character.eye_color;
-
-          if (height == 'unknown') {
-            height = '? ';
+          if (characterData.height == 'unknown') {
+            characterData.height = '? ';
           }
-          if (mass == 'unknown') {
-            mass = '? ';
+          if (characterData.mass == 'unknown') {
+            characterData.mass = '? ';
           }
-          if (eye_color == 'unknown') {
-            eye_color = '? ';
+          if (characterData.eye_color == 'unknown') {
+            characterData.eye_color = '? ';
           }
 
           character.films.map((film) => {
@@ -42,36 +46,38 @@ function Characters({ props, checkedState }) {
             }
           });
           if (!shouldBeActive) {
-            spanStyle = 'disabledCharacter';
+            characterData.spanStyle = 'disabledCharacter';
           }
-          return (
-            <li
-              key={id}
-              className={`characterListItem mar-1 bg-distinct ${spanStyle}`}
-            >
-              <div className={'characterName'}>
-                <h6>{character.name}</h6>
-              </div>
-              <ul className={'characterInfo'}>
-                <li>
-                  <i className='fas fa-arrows-alt-v txt-fa'></i>
-                  <span className={'characterData'}>{height}cm</span>
-                </li>
-                <li>
-                  <i className='fas fa-weight-scale txt-fa'></i>
-                  <span className={'characterData'}>{mass}kg</span>
-                </li>
-                <li>
-                  <i className='fas fa-eye txt-fa'></i>
-                  <span className={'characterData'}>{eye_color}</span>
-                </li>
-              </ul>
-            </li>
-          );
+          return <Item characterData={characterData} />;
         })}
       </ul>
     </Fragment>
   );
 }
-
+const Item = ({ characterData }) => {
+  return (
+    <li
+      key={characterData.id}
+      className={`characterListItem mar-1 bg-distinct ${characterData.spanStyle}`}
+    >
+      <div className={'characterName'}>
+        <h6>{characterData.name}</h6>
+      </div>
+      <ul className={'characterInfo'}>
+        <li>
+          <i className='fas fa-arrows-alt-v txt-fa'></i>
+          <span className={'characterData'}>{characterData.height}cm</span>
+        </li>
+        <li>
+          <i className='fas fa-weight-scale txt-fa'></i>
+          <span className={'characterData'}>{characterData.mass}kg</span>
+        </li>
+        <li>
+          <i className='fas fa-eye txt-fa'></i>
+          <span className={'characterData'}>{characterData.eye_color}</span>
+        </li>
+      </ul>
+    </li>
+  );
+};
 export default Characters;
